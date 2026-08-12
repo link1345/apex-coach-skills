@@ -193,6 +193,118 @@ Resetting is reasonable:
   player lacks resources and support. Even if the damaged enemy later turns out
   to be weak, that was not reliable enough at the decision timestamp.
 
+## Heal, Reload, and Inventory Decisions
+
+Use this procedure when judging healing, reloading, armor swapping, looting, or
+inventory management during a fight. Do not score the action itself as good or
+bad. Score the opportunity cost, exposure, and whether the player chose the
+best continuation from the information available at that moment.
+
+Opening the inventory is not automatically a mistake. A short inventory action
+while safely moving through cover can be correct, while the same action at a
+door, crossing, or enemy swing timing can be costly. Always explain what risk
+changed the evaluation.
+
+### Required Observations
+
+- Enemy pressure: enemy distance, line of sight, footsteps, gunfire direction,
+  climb, door, zipline, ability, or other approach cues.
+- Player survivability: current health and shield, cracked state, cover
+  quality, escape route, and whether a heal is needed before the next trade.
+- Weapon readiness: magazine state, backup weapon availability, reload status,
+  and whether the current weapon can finish or deter the next swing.
+- Time window: how long the heal, reload, armor swap, or inventory action
+  appears to continue, and whether the enemy can punish that window.
+- Ally state: whether teammates are fighting, knocked, healing, holding for the
+  player, or needing immediate support.
+- Attack opportunity: enemy healing, reviving, reloading, armor swapping,
+  isolated position, or missed chance to deny a reset.
+- Movement during operation: whether the player kept moving, slid, strafed,
+  used cover, or stopped in a punishable place.
+- Cover and line of sight: whether the operation is protected from the known
+  enemy angle and whether a different angle can still see the player.
+- Information uncertainty: whether audio is absent, mixed with ally sounds, or
+  not strong enough to confirm enemy distance.
+
+### Decision Rules
+
+- Do not write "bad because the inventory was opened." Write what the inventory
+  action prevented, what risk it created, or why it was safe enough.
+- Treat safe moving inventory management differently from stationary or
+  extended management immediately before contact.
+- Compare finishing the heal, canceling the heal, reloading, swapping weapons,
+  attacking, holding cover, and repositioning when those options are practical.
+- Finishing a heal is reasonable when the player has cover, enemy pressure is
+  delayed or blocked, allies can hold the angle, and the added health changes
+  the next trade.
+- Canceling a heal is reasonable when enemy pressure arrives before completion,
+  an ally needs an immediate trade, or an enemy heal/revive creates a higher
+  value attack window.
+- Reloading is reasonable when the current magazine cannot support the next
+  fight and the player has enough cover or team pressure to protect the reload.
+- Switching away from reload or inventory work is reasonable when teammate
+  pressure, enemy vulnerability, or incoming footsteps makes action more urgent
+  than preparation.
+- Do not over-prioritize self-recovery while ignoring teammates who are actively
+  trading or enemies who are visibly resetting. Explain whether helping the
+  fight now beats recovering first.
+- When the clip is close, present both acceptable options and name the
+  observation that would decide it, such as an enemy footstep, teammate call,
+  or visible magazine count.
+
+### Decision Examples
+
+Safe inventory management:
+
+- observed: The player opens inventory briefly while sliding between covered
+  positions.
+- observed: No enemy line of sight is visible, and the closest gunfire remains
+  distant or blocked.
+- observed: Teammates are not actively taking damage in the moment.
+- evaluation: The inventory action is acceptable because it is short, protected,
+  and does not cost an immediate trade or attack window. The inventory opening
+  itself is not a penalty.
+
+Punishable inventory management:
+
+- observed: The player keeps inventory open near a doorway after enemy
+  footsteps or gunfire indicate close pressure.
+- observed: The player stops moving and loses the ability to react to the swing.
+- inferred: The enemy can reach the doorway before the inventory action creates
+  meaningful value.
+- evaluation: The problem is not "inventory open"; the problem is extended
+  management during a punishable timing. Closing inventory, holding the door, or
+  repositioning would better protect the next decision.
+
+Heal continuation:
+
+- observed: The player is low shield behind solid cover.
+- observed: A teammate holds the enemy angle, and enemy footsteps do not close
+  before the heal is likely to finish.
+- evaluation: Finishing the heal is reasonable because the cover and teammate
+  pressure protect the time window, and the restored shield matters for the next
+  trade.
+
+Heal cancel:
+
+- observed: A teammate is actively fighting at close range while the player
+  heals behind cover.
+- observed: The enemy begins a revive or heal within reachable distance.
+- inferred: Canceling now can create a trade or deny the enemy reset before the
+  self-heal completes.
+- evaluation: Canceling the heal and helping the fight may be better than
+  finishing self-recovery. The review should compare the health gained against
+  the missed chance to swing with the teammate.
+
+Reload decision:
+
+- observed: The current magazine is low after the first spray.
+- observed: The backup weapon is ready, but a second enemy angle is not yet
+  pressuring the player.
+- evaluation: Reloading behind cover is reasonable if the next contact is
+  delayed. If footsteps close or an ally starts taking a 1v1, swapping weapons
+  or swinging to trade may become higher value than completing the reload.
+
 ## Expected Review Shape
 
 ```markdown
