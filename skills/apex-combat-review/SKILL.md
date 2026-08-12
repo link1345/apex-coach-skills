@@ -99,6 +99,100 @@ If a statement mixes observation and inference, split it into separate bullets.
 Prefer narrow, actionable feedback. Avoid turning one clip into broad rank
 strategy unless the clip itself provides the evidence.
 
+## Push, Hold, or Reset Decisions
+
+Use this procedure when judging whether the player should push, maintain the
+current position, or disengage/reset. Do not decide from a single cue such as an
+enemy shield crack. Compare the actual action with the practical alternatives
+available at the decision timestamp.
+
+Evaluate the expected value at the moment of decision, not the later result. A
+push that fails can still be reasonable if the observable information favored
+it, and a push that succeeds can still be a poor habit if it relied on
+information the player could not know.
+
+### Required Observations
+
+- Enemy damage state: estimated remaining health or shield state, and whether a
+  crack, flesh damage, knock, or armor swap was actually observed.
+- Squad state: current knocks, likely enemy squad size, teammate count, and
+  whether the fight is a 3v3, 3v2, 2v3, isolated duel, or unclear.
+- Player and ally resources: health, shield, healing state, reload state,
+  magazine depth, backup weapon readiness, grenades, movement tools, and
+  ability availability when visible.
+- Ally support: teammate distance, whether allies can swing or hold line of
+  sight at the same time, and whether the player is creating a trade or
+  entering alone.
+- Distance and timing: distance to the enemy, travel time, climb or door delay,
+  whether the enemy can finish a heal/revive/reload before contact, and whether
+  the player can return to cover.
+- Enemy position: cover quality, retreat path, door or building control, height,
+  and whether the enemy can kite the push or force a bad entry angle.
+- Enemy vulnerability: healing sound, revive sound, reload timing, ability
+  recovery, recent damage, split position, or forced movement.
+- Player vulnerability: low health, no shield, empty magazine, slow weapon swap,
+  exposed path, crossfire risk, and missing escape route.
+- Push assistance: grenades, scans, movement abilities, teammate utility, door
+  pressure, or angles that make the push safer.
+- External risk: third-party audio, nearby gunfire, ring pressure, exposed
+  rotation route, or another squad likely to arrive during the commit.
+
+### Decision Rules
+
+- Do not mark "should have pushed" from an enemy shield crack alone. Require a
+  combination such as low enemy resources, teammate advantage, synchronized
+  line of sight, short travel time, enemy healing/reviving/reloading, or utility
+  that reduces entry risk.
+- Mark a push as reasonable when the player has enough resources to survive the
+  entry, allies can trade or follow quickly, the enemy is vulnerable, and the
+  route does not expose the player to likely crossfire or third parties.
+- Mark holding as reasonable when pressure, space control, or a safe angle is
+  already winning value, but a full commit would remove cover, split the team,
+  or allow another enemy to trade for free.
+- Mark disengaging or resetting as reasonable when the player's resources are
+  low, ally support is unavailable, enemy count or angle control is unfavorable,
+  or external risk makes a commit lower value than healing, reloading, or
+  repositioning.
+- If the decision is close, present multiple acceptable choices and explain what
+  extra observation would separate them. Avoid forcing a single correct answer
+  when the clip supports a range.
+- Always compare actual action against at least one reasonable alternative:
+  push, hold, heal/reload, reposition, use utility, or fully reset.
+
+### Decision Examples
+
+Push is reasonable:
+
+- observed: The player cracked an enemy and dealt additional flesh damage.
+- observed: A teammate is close enough to swing the same door within a moment.
+- observed: The enemy begins healing behind shallow cover and has no visible
+  teammate angle protecting the path.
+- inferred: The enemy is unlikely to finish the heal before contact.
+- evaluation: Pushing is reasonable because damage, teammate timing, enemy
+  vulnerability, and short travel time combine to create a favorable entry. The
+  crack alone is not the reason; the supporting observations make the commit
+  high value.
+
+Holding is reasonable:
+
+- observed: The player cracked one enemy across a lane.
+- observed: The enemy remains behind strong cover with a second enemy angle
+  watching the crossing.
+- observed: The player's team can hold the current angle and deny a revive or
+  rotation.
+- evaluation: Maintaining the angle is reasonable because the team already has
+  pressure without crossing open space. A push might work, but it would trade a
+  controlled angle for an exposed entry against an unconfirmed second enemy.
+
+Resetting is reasonable:
+
+- observed: The player is low health with an empty or nearly empty magazine.
+- observed: Teammates are far enough away that they cannot immediately trade.
+- inferred: Nearby gunfire or footsteps suggests third-party or flank risk.
+- evaluation: Backing up to heal, reload, and regroup is reasonable because the
+  player lacks resources and support. Even if the damaged enemy later turns out
+  to be weak, that was not reliable enough at the decision timestamp.
+
 ## Expected Review Shape
 
 ```markdown
