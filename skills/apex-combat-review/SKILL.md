@@ -549,41 +549,215 @@ Zipline and gunfire suggest retreat risk:
   less attractive until the rear angle is checked. Without the audio, continuing
   pressure on the front fight may remain reasonable.
 
+## Review Output Format and Priority
+
+Use this format when producing a combat review. The output should help the
+player decide what to change first, not list every small mistake in timestamp
+order. Prioritize repeated root causes and fight-losing decisions over minor
+mechanical errors unless the mechanical error directly caused a major decision
+failure.
+
+Each review must include:
+
+1. Fight summary
+2. Priority findings
+3. Good decisions to keep
+4. Reference checks when used
+5. Final improvement themes
+
+### Finding Format
+
+Write each finding with the same fields so observations, inference, and
+evaluation stay separated:
+
+- timestamp / range: the moment or segment the finding covers.
+- severity: `critical`, `high`, `medium`, or `low`.
+- improvement impact: `fight-losing`, `major`, `moderate`, or `minor`.
+- root cause: the underlying habit or decision pattern, not only the visible
+  mistake.
+- observations: direct visible or audible facts from the clip, labeled
+  `observed`.
+- inferences: likely but unconfirmed context, labeled `inferred`, with the cue
+  that supports it.
+- actual action: what the player did, written without judgment.
+- evaluation: why the action was strong, weak, or close from the available
+  information.
+- better option or keep doing: the next action to choose, or the good choice to
+  repeat.
+- rationale: why that option changes the next similar fight.
+- confidence: `high`, `medium`, or `low`, with the reason for uncertainty.
+- reference impact: only when `apex-reference-mcp` was used; name the reference
+  item and which fact affected the judgment.
+
+Do not merge labels inside one sentence. If one point contains both a visible
+fact and a guess, split it into `observed` and `inferred` bullets.
+
+### Priority Rules
+
+- Rank findings by death, knock, lost fight, failed reset, or lost trade impact
+  before listing small aim, movement, loot, or inventory issues.
+- Give `critical` to decisions that directly expose the player to death, lose a
+  winnable team trade, abandon a necessary reset, or ignore a confirmed
+  high-value objective such as denying a revive.
+- Give `high` to decisions that strongly reduce fight win probability but do
+  not alone decide the fight.
+- Give `medium` to correctable choices that create avoidable risk but have
+  limited fight outcome impact.
+- Give `low` to polish items, minor timing improvements, or mechanics that
+  should not distract from larger decision work.
+- When a minor mechanical error and a major decision error appear together,
+  explain the decision first. Example: "wide-peeking two enemy lines while low
+  resources" outranks "missed the last bullets."
+- Do not inflate severity because the player died after the action. Severity
+  must come from information available before or during the decision.
+
+### Repetition and Grouping
+
+Group repeated mistakes when they share a root cause. Do not write five
+separate findings for five similar wide peeks if they all come from the same
+spacing problem. Use one finding with multiple timestamps:
+
+- root cause: repeated long peeks from cover after the shot opportunity ended.
+- timestamps: `00:18-00:21`, `00:34-00:36`, `00:51-00:54`.
+- evaluation: the repeated pattern gave enemies focus-fire windows and made
+  healing/reloading harder.
+
+Keep a separate finding only when the timestamp has a different decision
+problem, different evidence, or different coaching action.
+
+### Good Decisions
+
+Include good decisions that the player should intentionally repeat. A good
+decision must be as evidence-backed as an improvement point:
+
+- timestamp / range
+- observed information
+- actual action
+- why it worked from the available information
+- what to keep doing next time
+- confidence
+
+Do not write vague praise. "Good patience" is too broad. Write the visible
+decision, such as holding a protected cross until the teammate arrived, canceling
+a heal when a revive sound created a denial window, or resetting because the
+player lacked ammo and ally trade support.
+
+### Final Improvement Themes
+
+End the whole video review with up to three priority themes. These are not new
+findings; they summarize the highest-leverage patterns from the findings above.
+
+Each theme should include:
+
+- theme: the habit or decision pattern.
+- why it matters: how it changes fight outcomes.
+- next cue: the observable trigger the player should notice in a future fight.
+- next action: the concrete response to practice.
+- linked findings: timestamps or finding numbers.
+
+If there are more than three possible themes, keep the three with the largest
+fight outcome impact. Put low-severity polish items in the relevant finding, not
+in the final theme list.
+
+### Reference Check Reporting
+
+When `apex-reference-mcp` changes the judgment, include a compact reference
+entry:
+
+- reference: item, weapon, legend, mechanic, or patch-specific value checked.
+- used for: which decision the reference affected.
+- result: confirmed fact, unknown fact, or patch-specific uncertainty.
+- impact: how the review changed because of the reference.
+
+If the reference is missing or uncertain, keep the finding confidence lower and
+state what remains unknown. Do not fill missing reference values from memory.
+
 ## Expected Review Shape
 
 ```markdown
-## Timestamp
-00:42-00:48
+## Fight Summary
+- range: 00:00-01:12
+- context: Close-range building fight after initial shield damage.
+- main issue: The fight was lost more from repeated unsupported re-peeks while
+  low on resources than from one isolated aim miss.
 
-## Observed Information
-- observed: You cracked one enemy shield before taking cover.
-- observed: Your magazine was low before the second peek.
-- inferred: At least one enemy could still trade because a second weapon angle
-  was visible near the doorway.
-- unknown: Teammate health was not visible in this segment.
+## Priority Findings
 
-## Options Available
-- Hold cover and reload.
-- Heal if enemy pressure dropped.
-- Re-peek for a quick finish.
-- Back up to reset the angle.
+### Finding 1
+- timestamp / range: 00:42-00:48
+- severity: critical
+- improvement impact: fight-losing
+- root cause: Re-peeking before restoring weapon readiness or changing angle.
+- observations:
+  - observed: You cracked one enemy shield before taking cover.
+  - observed: Your magazine was low before the second peek.
+  - observed: The doorway still had a second possible enemy weapon angle.
+- inferences:
+  - inferred: At least one enemy could trade the re-peek because the second
+    angle remained active.
+- actual action: You re-peeked before reloading and stayed exposed after the
+  first burst.
+- evaluation: The re-peek had reward because one enemy was cracked, but the
+  known ammo state and exposure made the follow-up fragile. This is not wrong
+  because you died; it is risky because the clip already showed low ammo and a
+  second possible enemy angle before the death.
+- better option or keep doing: Hold cover, reload or swap, then re-peek from a
+  changed angle with teammate trade support.
+- rationale: Readiness and angle change protect the next trade while preserving
+  the pressure created by the crack.
+- confidence: high because the ammo state, cover position, and enemy angle were
+  visible.
 
-## Actual Action
-You re-peeked before reloading and stayed exposed after the first burst.
+### Finding 2
+- timestamp / range: 00:18-00:21 and 00:34-00:36
+- severity: high
+- improvement impact: major
+- root cause: Repeated long peeks after the shot opportunity ended.
+- observations:
+  - observed: You stayed exposed after the initial shots in both segments.
+  - observed: Backing up would have broken the visible enemy line.
+- actual action: You continued holding the same exposed angle.
+- evaluation: These are grouped because the same root cause appears twice. The
+  issue is not two separate minor peeking mistakes; it is the repeated habit of
+  giving enemies focus-fire time after your useful damage window closes.
+- better option or keep doing: Fire the useful burst, break line of sight, then
+  re-open from cover or a new angle.
+- rationale: Short exposure keeps pressure without offering free return damage.
+- confidence: medium because enemy count behind the angle is partly inferred.
 
-## Evaluation
-The re-peek had a possible reward because one enemy was cracked, but the known
-ammo and exposure made the follow-up fragile. This is not wrong because the
-player died; it is risky because the clip already showed low ammo and a second
-possible enemy angle before the death.
+## Good Decisions To Keep
 
-## Coaching Point
-After cracking an enemy, confirm whether you can finish with current ammo and
-cover. If not, reload or change the angle before taking the second peek.
+### Keep 1
+- timestamp / range: 00:27-00:31
+- observations:
+  - observed: Enemy pressure paused after your teammate created a side angle.
+  - observed: You backed into cover before starting the shield heal.
+- actual action: You chose a protected short reset instead of chasing damage.
+- evaluation: This was a good decision because the available information showed
+  a safe recovery window and the extra shield mattered for the next trade.
+- keep doing: Reset behind solid cover when teammate pressure blocks the swing.
+- confidence: high.
 
 ## Reference Checks
 - reference: Use `apex-reference-mcp` if the judgment depends on exact reload,
-  healing, ability, or patch-specific values.
+  healing, ability, mechanic, or patch-specific values.
+- result: No patch-specific value was required for this example.
+
+## Final Improvement Themes
+1. Stop repeated long peeks after the damage window closes.
+   - why it matters: It prevents free focus-fire damage and keeps reset options
+     available.
+   - next cue: Your first burst ends, magazine is low, or a second enemy angle
+     remains visible.
+   - next action: Break line of sight, reload or swap, then reopen from cover.
+   - linked findings: Finding 1, Finding 2.
+2. Preserve good protected resets.
+   - why it matters: Safe healing keeps you trade-ready without abandoning the
+     fight.
+   - next cue: Teammate pressure blocks the enemy swing and you are behind solid
+     cover.
+   - next action: Finish the short heal, then rejoin from a playable angle.
+   - linked findings: Keep 1.
 ```
 
 ## Guardrails
