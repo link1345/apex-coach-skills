@@ -305,6 +305,124 @@ Reload decision:
   delayed. If footsteps close or an ally starts taking a 1v1, swapping weapons
   or swinging to trade may become higher value than completing the reload.
 
+## Line of Sight, Cover, and Positioning Decisions
+
+Use this procedure when judging angles, cover use, peeking, spacing from
+teammates, height, doors, buildings, rocks, and the next cover available during
+an advance, hold, or retreat. Do not stop at "use cover." Judge whether the
+cover and position were sufficient for the player's action objective at that
+timestamp.
+
+Check the movement before and after contact when one frame is not enough. A
+single frame can show that cover exists, but the path into or out of that cover
+often decides whether the position was playable.
+
+### Required Observations
+
+- Enemy line count: how many enemies can reasonably see or swing the player,
+  whether those lines are confirmed, inferred, or unknown, and whether the
+  player can isolate one enemy at a time.
+- Cover quality: cover size, body coverage, head-glitch or shoulder exposure,
+  distance from cover, breakable doors, climbable objects, and whether the
+  player can leave without crossing open space.
+- Peek exposure: how much of the player's body is exposed, how long the peek
+  lasts, whether the peek is repeated from the same timing, and whether the
+  enemy can pre-aim it.
+- Ally angles: whether teammates can shoot the same target, trade if the player
+  is swung, or create a cross instead of standing on the same line.
+- Team overlap: whether the player and teammates are stacked behind one cover,
+  blocking each other, or all vulnerable to the same enemy angle, grenade, door,
+  or ability.
+- Height and vertical routes: high-ground value, drop risk, climb delay, zipline
+  exposure, and whether the player can return to cover after using height.
+- Next cover: the next safe object, door, building corner, rock, knockdown
+  shield, or terrain fold available when pushing, holding, or retreating.
+- Terrain use: doors, buildings, rocks, ledges, bins, corners, and other local
+  objects that change line of sight or timing.
+- Protected recovery: whether the player can heal or reload while enemy line of
+  sight is broken, and whether another angle can still see the recovery.
+- Path history: the player's movement path before and after the fight started,
+  including whether they entered a position with a return route or drifted into
+  open space.
+
+### Decision Rules
+
+- Do not write only "you should have used cover." Name the enemy line, the
+  cover object, the exposure problem, and the better next position.
+- Evaluate cover against the objective. The same rock can be good for holding a
+  single angle, poor for crossing into two enemies, and acceptable for a short
+  reload if teammates control the open side.
+- A peek is reasonable when it exposes only the needed angle, has a clear
+  purpose, is short enough to avoid free focus fire, and keeps a return route.
+- A peek is punishable when it exposes the player to multiple enemy lines, lasts
+  after the shot opportunity ends, repeats from a pre-aimed angle, or prevents a
+  teammate from trading.
+- Favor cross formation when teammates can pressure the same enemy from
+  different protected angles without becoming isolated.
+- Mark isolation when the player takes a line that teammates cannot support,
+  commits around a corner alone, drops height without trade potential, or moves
+  to cover that cannot be reached by the team.
+- When attacking, identify the next cover before the commit. A push through open
+  space needs a short travel window, team pressure, utility, or an enemy state
+  that justifies the exposure.
+- When holding, check whether the current position denies space or only keeps
+  the player safe while teammates lose playable angles elsewhere.
+- When retreating, check whether the path breaks line of sight in stages. A
+  retreat that turns away through open space can be worse than briefly holding a
+  corner, door, or height edge.
+- Height is valuable only while it provides pressure, information, or a safe
+  exit. Dropping or climbing should be evaluated by the delay and exposure it
+  creates, not by "high ground" as a fixed rule.
+- If ally spacing is unclear, label it `unknown` and avoid claiming a failed
+  cross. Use visible teammate icons, tracers, knock feed, and simultaneous
+  damage as evidence.
+
+### Positioning Examples
+
+Attack through next cover:
+
+- observed: The enemy is behind a door and one teammate is close enough to shoot
+  the same entrance.
+- observed: The player can move from a rock to the door frame with only a brief
+  open crossing.
+- inferred: A second enemy line is not confirmed on the crossing.
+- evaluation: Advancing is reasonable because the next cover is defined, ally
+  pressure can trade the entry, and the exposure window is short. The coaching
+  point is to commit from rock to door frame, not to stop halfway in the open.
+
+Hold a protected cross:
+
+- observed: The player holds a corner that sees the same enemy doorway as a
+  teammate from a different angle.
+- observed: The player's body is mostly covered, and backing up breaks the
+  enemy line.
+- observed: Moving forward would stack the player with the teammate and expose
+  both to the same door swing.
+- evaluation: Holding is better than pushing because the current position forms
+  a cross and preserves a retreat path. The same cover would be weaker if the
+  player wide-peeked long enough for two enemies to focus the angle.
+
+Retreat in stages:
+
+- observed: The player is cracked near a building corner while enemy shots come
+  from the front and right.
+- observed: A door and interior wall are reachable after a short slide, while
+  the longer path to teammates crosses open ground.
+- evaluation: Retreating through the door is the higher-value choice because it
+  breaks line of sight in stages and creates a protected heal or reload window.
+  Running directly across open ground asks the player to survive two enemy
+  lines without meaningful cover.
+
+Poor same-cover overlap:
+
+- observed: Two teammates already occupy the same small rock and shoot the same
+  lane.
+- observed: The player joins the rock instead of taking a nearby side corner.
+- inferred: One grenade or wide swing can pressure the whole team at once.
+- evaluation: The issue is not that the rock has no cover; it is that all three
+  players share one defensive angle. Taking the side corner would create a
+  cross while keeping a retreat path back to the team.
+
 ## Expected Review Shape
 
 ```markdown
