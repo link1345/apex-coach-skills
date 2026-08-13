@@ -423,6 +423,132 @@ Poor same-cover overlap:
   players share one defensive angle. Taking the side corner would create a
   cross while keeping a retreat path back to the team.
 
+## Audio Information Decisions
+
+Use this procedure when footsteps, gunfire, healing, reviving, reloading,
+movement objects, environmental sounds, or legend ability sounds could change a
+combat decision. Audio is decision evidence, not only extra context. It can
+justify pushing, holding, checking an angle, delaying a heal, retreating, or
+ignoring a weak-looking opportunity when unseen risk is audible.
+
+Do not over-state audio precision. Stereo left/right cues may support a broad
+direction, but do not claim exact height, floor, distance, player count, or
+enemy identity unless the clip also gives visible support. Write "heard" only
+when the audio is clear in the clip; write "possibly heard" or `inferred` when
+the sound is masked, mixed, or could be a teammate or environment cue.
+
+### Required Observations
+
+- Audio event type: footstep, gunfire, healing sound, revive sound, reload
+  sound, door, zipline, climb, jump pad or other movement cue, environmental
+  sound, or distinctive legend ability cue.
+- Estimated direction: broad left, right, front, behind, same building, outside,
+  or unknown. Use stereo information for broad left/right only.
+- Estimated distance: close, mid, far, blocked, or unknown. Do not infer exact
+  meters or vertical floor from audio alone.
+- Confidence: high when the sound is isolated and repeated, medium when it is
+  plausible but partially masked, and low when teammates, multiple fights, or
+  environment noise could explain it.
+- Source ambiguity: whether the sound could be an ally, a third party, a
+  different nearby fight, a door or zipline object, or a legend ability from
+  either team.
+- Video confirmation: visible enemy movement, teammate icon position, tracers,
+  damage numbers, doors opening, revive/heal animation, ability effect, kill
+  feed, or map/ring context that supports or contradicts the audio.
+- Decision impact: whether the sound changes push, hold, warning, retreat,
+  heal, reload, revive denial, door hold, or repositioning value.
+- Counterfactual baseline: how the play would be evaluated if the audio cue had
+  not been present or had lower confidence.
+
+### Decision Rules
+
+- Use audio as a reason to change the decision only when the event type,
+  direction, distance band, and confidence are stated separately.
+- Treat footsteps as pressure evidence, not identity proof. If ally and enemy
+  footsteps cannot be separated, label the source uncertain and avoid claiming
+  a confirmed flank.
+- Use gunfire direction to estimate third-party or teammate pressure, but check
+  whether the sound could come from another squad fight rather than the current
+  target.
+- Healing or revive audio can create an attack window when the player can reach
+  safely, deny the reset, and still avoid unsupported crossfire.
+- Reload audio can justify a swing only when timing, distance, cover, and ally
+  trade potential make contact realistic before the enemy is ready again.
+- Door, zipline, climb, and other movement or environmental sounds should change
+  warning and angle-holding decisions before they become visible threats.
+- Distinctive legend ability sounds can explain threat or opportunity, but use
+  `apex-reference-mcp` when the judgment depends on exact ability behavior,
+  duration, or patch-specific details.
+- When audio and video conflict, prefer the directly visible fact for confirmed
+  position and keep the audio as uncertainty. Example: if footsteps sound left
+  but the enemy is visible right, write that an additional source may be left,
+  not that the visible enemy teleported.
+- Always compare the audio-informed evaluation with the no-audio baseline when
+  the sound changes the recommendation.
+- If the clip has no usable audio, say so and avoid penalizing the player for
+  missing an audio-only cue.
+
+### Audio Examples
+
+Footstep warning changes a hold:
+
+- observed: Footsteps are audible on the player's left while the visible enemy
+  remains in front.
+- inferred: Direction confidence is medium because teammate position is not
+  fully visible and gunfire masks part of the cue.
+- observed: The player keeps healing without checking the left doorway.
+- evaluation: With the audio cue, canceling or delaying the heal to check the
+  doorway is reasonable because close pressure may arrive before the heal
+  finishes. Without that audio, finishing the heal behind cover would be more
+  acceptable.
+
+Healing sound creates a push window:
+
+- observed: A healing sound starts behind a nearby door after the player cracks
+  an enemy.
+- observed: A teammate is close enough to trade, and the path to the door stays
+  mostly covered.
+- inferred: The sound source is likely the damaged enemy, but exact health and
+  heal completion timing are unknown.
+- evaluation: Pushing or applying door pressure is reasonable because the audio
+  suggests a reset window to deny. The review should not say the enemy was
+  guaranteed one-shot; it should say the healing audio increased the value of a
+  coordinated push.
+
+Revive sound changes priority:
+
+- observed: A revive sound is audible from the room while another enemy angle is
+  not currently shooting.
+- observed: The player chooses to loot instead of holding or pressuring the
+  doorway.
+- inferred: Confidence is high if the revive sound is isolated and no teammate
+  revive is happening nearby.
+- evaluation: Pressuring the doorway is higher value than looting because revive
+  audio signals a time-limited denial opportunity. If the sound were absent,
+  the same short loot action might be acceptable.
+
+Reload sound supports a swing:
+
+- observed: An enemy reload sound occurs immediately after the enemy fires a
+  long burst from close range.
+- observed: The player has cover, a ready weapon, and a teammate angle that can
+  trade the swing.
+- inferred: The reload cue is medium confidence because nearby gunfire overlaps
+  the end of the sound.
+- evaluation: A short swing can be reasonable because the audio indicates a
+  temporary readiness gap. The recommendation depends on timing and support, not
+  on claiming the enemy is defenseless.
+
+Zipline and gunfire suggest retreat risk:
+
+- observed: Zipline audio appears behind the team while gunfire continues in
+  front.
+- inferred: This could be a third party or a teammate movement cue; confidence
+  is low to medium without a visible enemy.
+- evaluation: The sound should raise flank risk and make a full forward commit
+  less attractive until the rear angle is checked. Without the audio, continuing
+  pressure on the front fight may remain reasonable.
+
 ## Expected Review Shape
 
 ```markdown
